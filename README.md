@@ -14,20 +14,18 @@ npm install maze-solver
 You can use this package to solve a maze by selecting either BFS or DFS for pathfinding.
 
 # Parameters
-maze: A 2D array representing the maze. Each cell can be 0 (open path) or 1 (wall).
-start: An array representing the starting point in the format [row, col].
-end: An array representing the ending point in the format [row, col].
-algorithm (optional): The algorithm to use for pathfinding. Can be either 'bfs' (default) or 'dfs'.
+- maze: A 2D array representing the maze. Each cell can be 0 (open path) or 1 (wall).
+- start: An array representing the starting point in the format [row, col].
+- end: An array representing the ending point in the format [row, col].
+- algorithm (optional): The algorithm to use for pathfinding. Can be either 'bfs' (default) or 'dfs'.
 
-# Algorithms
-BFS (Breadth-First Search): Finds the shortest path from the start to the end. It explores the maze level by level.
-DFS (Depth-First Search): Finds a valid path from the start to the end (not necessarily the shortest). It explores as deep as possible before backtracking.
+## Algorithms
+- BFS (Breadth-First Search): Finds the shortest path from the start to the end. It explores the maze level by level.
+- DFS (D- epth-First Search): Finds a valid path from the start to the end (not necessarily the shortest). It explores as deep as possible before backtracking.
 
-# Methods
-solve(): Solves the maze using the selected algorithm ('bfs' or 'dfs'). Returns the path from the start to the end.
-reconstructPath(parent): Reconstructs the path from the end to the start using the parent mapping.
-Contributing
-Feel free to fork the repository, make changes, and submit pull requests. Contributions are always welcome!
+## Methods
+- solve(): Solves the maze using the selected algorithm ('bfs' or 'dfs'). Returns the path from the start to the end.
+- reconstructPath(parent): Reconstructs the path from the end to the start using the parent mapping.
 
 ## Example
 ```bash
@@ -54,5 +52,9 @@ console.log('DFS Path:', pathDFS);
 
 ```
 
-# License
+## Contributing
+Feel free to fork the repository, make changes, and submit pull requests. Contributions are always welcome ❤️!
+Stay permissionless!!! 👨‍💻
+
+## License
 ISC License
