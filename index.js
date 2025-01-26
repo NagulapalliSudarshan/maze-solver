@@ -1,4 +1,4 @@
-class MazeSolver {
+class GridSolver {
     constructor(maze, start, end, algorithm = 'bfs') {
       this.maze = maze;
       this.start = start;
@@ -122,5 +122,5 @@ class MazeSolver {
     }
   }
   
-  module.exports = MazeSolver;
+  module.exports = GridSolver;
   
