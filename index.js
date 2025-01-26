@@ -9,11 +9,11 @@ class GridSolver {
         [0, -1], // left
         [0, 1],  // right
       ];
-      this.algorithm = algorithm; // 'bfs' or 'dfs'
+      this.algorithm = algorithm; // 'bfs', 'dfs', or 'a-star'
     }
   
     /**
-     * Solves the maze using the selected algorithm (BFS or DFS).
+     * Solves the maze using the selected algorithm (BFS, DFS, or A*).
      * @returns {Array<Array<number>>} - The shortest path from start to end.
      */
     solve() {
@@ -21,8 +21,10 @@ class GridSolver {
         return this.bfs();
       } else if (this.algorithm === 'dfs') {
         return this.dfs();
+      } else if (this.algorithm === 'a-star') {
+        return this.aStar();
       } else {
-        throw new Error('Unsupported algorithm. Please choose either "bfs" or "dfs".');
+        throw new Error('Unsupported algorithm. Please choose either "bfs", "dfs", or "a-star".');
       }
     }
   
@@ -85,7 +87,7 @@ class GridSolver {
           return this.reconstructPath(parent);
         }
   
-        // Explore neighbors in DFS order (can be changed to stack pop order)
+        // Explore neighbors in DFS order
         for (const [dx, dy] of this.directions) {
           const nx = x + dx;
           const ny = y + dy;
@@ -102,6 +104,74 @@ class GridSolver {
       }
   
       return null; // No path found
+    }
+  
+    /**
+     * A* algorithm to find the shortest path.
+     * @returns {Array<Array<number>>} - The shortest path from start to end.
+     */
+    aStar() {
+      const openSet = [];
+      const closedSet = new Set();
+      const parent = {}; // To reconstruct the path
+      const gScore = {}; // Actual cost from start to current node
+      const fScore = {}; // Estimated cost from start to end through current node
+  
+      openSet.push(this.start);
+      gScore[this.start.toString()] = 0;
+      fScore[this.start.toString()] = this.heuristic(this.start, this.end);
+  
+      while (openSet.length > 0) {
+        // Get node with the lowest fScore
+        let current = openSet.reduce((lowest, node) => {
+          return fScore[node.toString()] < fScore[lowest.toString()] ? node : lowest;
+        });
+  
+        // If we've reached the end, reconstruct and return the path
+        if (current[0] === this.end[0] && current[1] === this.end[1]) {
+          return this.reconstructPath(parent);
+        }
+  
+        // Move current from openSet to closedSet
+        openSet.splice(openSet.indexOf(current), 1);
+        closedSet.add(current.toString());
+  
+        // Explore neighbors
+        for (const [dx, dy] of this.directions) {
+          const nx = current[0] + dx;
+          const ny = current[1] + dy;
+          const neighbor = [nx, ny];
+  
+          if (
+            nx >= 0 && ny >= 0 && nx < this.maze.length && ny < this.maze[0].length &&
+            this.maze[nx][ny] === 0 && !closedSet.has(neighbor.toString())
+          ) {
+            const tentativeGScore = gScore[current.toString()] + 1;
+  
+            if (!openSet.includes(neighbor)) {
+              openSet.push(neighbor);
+            } else if (tentativeGScore >= gScore[neighbor.toString()]) {
+              continue;
+            }
+  
+            parent[neighbor.toString()] = current;
+            gScore[neighbor.toString()] = tentativeGScore;
+            fScore[neighbor.toString()] = gScore[neighbor.toString()] + this.heuristic(neighbor, this.end);
+          }
+        }
+      }
+  
+      return null; // No path found
+    }
+  
+    /**
+     * Heuristic function for A* (Manhattan distance).
+     * @param {Array<number>} a - The current node.
+     * @param {Array<number>} b - The target node.
+     * @returns {number} - The Manhattan distance between a and b.
+     */
+    heuristic(a, b) {
+      return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]);
     }
   
     /**
