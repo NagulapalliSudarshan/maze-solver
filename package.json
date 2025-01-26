@@ -1,0 +1,26 @@
+{
+  "name": "grid-solver",
+  "version": "1.0.0",
+  "description": "This is a package that helps to solve a maze/grid given my the user",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NagulapalliSudarshan/maze-solver.git"
+  },
+  "keywords": [
+    "maze",
+    "path",
+    "solver",
+    "grid",
+    "find"
+  ],
+  "author": "itachi-uchiha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NagulapalliSudarshan/maze-solver/issues"
+  },
+  "homepage": "https://github.com/NagulapalliSudarshan/maze-solver#readme"
+}
