@@ -1,6 +1,6 @@
 # Grid Solver
 
-A class-based maze/grid solver using Breadth-First Search (BFS) and Depth-First Search (DFS) algorithms. This package allows you to solve mazes and find paths using either BFS or DFS based on your requirements.
+A class-based maze/grid solver using Breadth-First Search (BFS), Depth-First Search (DFS) and A-star algorithms. This package allows you to solve mazes and find paths using either BFS or DFS based on your requirements.
 
 ## Installation
 
