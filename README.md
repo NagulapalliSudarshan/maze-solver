@@ -21,7 +21,8 @@ You can use this package to solve a maze by selecting either BFS or DFS for path
 
 ## Algorithms
 - BFS (Breadth-First Search): Finds the shortest path from the start to the end. It explores the maze/grid level by level.
-- DFS (D- epth-First Search): Finds a valid path from the start to the end (not necessarily the shortest). It explores as deep as possible before backtracking.
+- DFS (Depth-First Search): Finds a valid path from the start to the end (not necessarily the shortest). It explores as deep as possible before backtracking.
+- A* (A-star): Finds the shortest path by combining actual cost (g(n)) and estimated cost (h(n)), prioritizing nodes with the lowest f(n) = g(n) + h(n).
 
 ## Methods
 - solve(): Solves the maze/grid using the selected algorithm ('bfs' or 'dfs'). Returns the path from the start to the end.
@@ -49,6 +50,10 @@ console.log('BFS Path:', pathBFS);
 const gridSolverDFS = new GridSolver(grid, start, end, 'dfs');
 const pathDFS = gridSolverDFS.solve();
 console.log('DFS Path:', pathDFS); 
+
+const gridSolverAS = new GridSolver(grid, start, end, 'a-star');
+const pathAS = gridSolverAS.solve();
+console.log('A* Path:', pathAS); 
 
 ```
 
