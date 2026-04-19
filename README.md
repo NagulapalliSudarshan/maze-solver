@@ -10,7 +10,7 @@ To install the `grid-solver` package, you can use npm:
 npm install grid-solver
 ```
 or
-```
+```bash
 npm i grid-solver
 ```
 
