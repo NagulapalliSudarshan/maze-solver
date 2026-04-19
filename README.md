@@ -9,6 +9,10 @@ To install the `grid-solver` package, you can use npm:
 ```bash
 npm install grid-solver
 ```
+or
+```
+npm i grid-solver
+```
 
 ## Usage
 You can use this package to solve a maze by selecting either BFS or DFS for pathfinding.
