@@ -62,7 +62,7 @@ console.log('A* Path:', pathAS);
 ```
 
 ## Contributing
-Feel free to fork the repository, make changes, and submit pull requests. Contributions are always welcome ❤️!  
+Feel free to fork the repository, make changes, and submit pull requests. Contributions are always welcome!  
 Stay permissionless!!! 👨‍💻
 
 ## License
